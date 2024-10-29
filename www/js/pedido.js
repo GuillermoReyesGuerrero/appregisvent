@@ -8,11 +8,13 @@ function verificarSesion() {
   }
 }
 
+var idPedido = 0;
 window.onload = function () {
   verificarSesion();
 
   const params = new URLSearchParams(window.location.search);
   const id_pedido = params.get("idPedido");
+  idPedido = id_pedido;
   //console.log('ID del pedido:', id_pedido);
   // Puedes usar el id_mispedidos para cargar los detalles del pedido desde tu base de datos, etc.
   $("#numeroPedido").text(id_pedido);
@@ -69,7 +71,7 @@ function displayPedidoArticulos(articulos,id_pedido) {
                         '</div>'+
                       '</div>'+
                       '<div class="col-auto">'+
-                        '<button class="btn" onclick="obtenerPedido('+articulo.id_articulo+')"><i class="fas fa-angle-right icon-big"></i></button>'+
+                        '<button class="btn" onclick="consultarArticulo('+articulo.id_articulo+','+2+')"><i class="fas fa-angle-right icon-big"></i></button>'+
                       '</div>'+
                     '</div>'+
                   '</div>'+
@@ -81,9 +83,8 @@ function displayPedidoArticulos(articulos,id_pedido) {
 }
 
 function consultarArticulo(idArticulo, op) {
-  // console.log(idArticulo+' '+op);
-  window.location.href =
-    "detalle_pedido.html?idArticulo=" + idArticulo + "&op=" + op;
+  console.log(idArticulo+' '+op);
+  window.location.href = "detalle_pedido.html?idArticulo=" + idArticulo + "&op=" + op+ "&idPedido=" +idPedido;
 }
 
 function eliminarArticulo(idArticulo) {

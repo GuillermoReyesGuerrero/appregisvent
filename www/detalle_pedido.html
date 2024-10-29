@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>AppRegisVent</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link rel="icon" href="img/iconoReyes.png" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/plugins.min.css" />
+    <link rel="stylesheet" href="css/kaiadmin.min.css" />
+
+    <style>
+      .swal-icon--custom {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    </style>
+
+    <!-- <link rel="stylesheet" href="css/demo.css" /> -->
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="mainTotales.html" class="logo">
+              <img
+                src="img/iconoReyes.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="40"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item">
+                <a href="mainTotales.html">
+                  <p>AppRegisVent</p>
+                </a>
+              </li>
+              <hr />
+              <li class="nav-item">
+                <a href="mainTotales.html">
+                  <i class="fas fa-home"></i>
+                  <p>Inicio</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a href="pedidos.html">
+                  <i class="fas fa-th-list"></i>
+                  <p>Pedidos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#">
+                  <i class="fas fa-cog"></i>
+                  <p>Configuraciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#tables">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>Cerrar Sesión</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                  src="img/iconoReyes.png"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2"
+            >
+              <div>
+                <h3 class="fw-bold mb-3">
+                  <i
+                    class="fas fa-arrow-left icon-big p-2"
+                    onclick="regresarVerpedido()"
+                  ></i>
+                  Articulo # <strong id="numeroArticulo"></strong>
+                </h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <form class="mb-3" id="formEditarArticulo">
+                      <div class="row text-center">
+                        <div class="col">
+                              <img
+                                id="imagenArticulo"
+                                alt="title"
+                                height="100"
+                              />
+                              <input type="text" id="idArticuloArt" name="idArticuloArt" hidden/>
+                              <input type="text" id="idPedidoArt" name="idPedidoArt" hidden/>
+                        </div>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="nombreArt" class="col-md-3 col-form-label"
+                          >Articulo</label
+                        >
+                        <div class="col-md-9 p-0">
+                          <input
+                            type="text"
+                            class="form-control input-full"
+                            id="nombreArt"
+                            name="nombreArt"
+                            placeholder="Enter Input"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="descripcionArt" class="col-md-3 col-form-label"
+                          >Descripción</label
+                        >
+                        <textarea class="form-control" id="descripcionArt" name="descripcionArt" rows="3">
+                        </textarea>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="cantidadArt" class="col-md-3 col-form-label"
+                          >Cantidad</label
+                        >
+                        <div class="col-md-9 p-0">
+                          <input
+                            type="text"
+                            class="form-control input-full"
+                            id="cantidadArt"
+                            name="cantidadArt"
+                            placeholder="Enter Input"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="preCostoArt" class="col-md-3 col-form-label"
+                          >Precio Costo</label
+                        >
+                        <div class="col-md-9 p-0">
+                          <input
+                            type="text"
+                            class="form-control input-full"
+                            id="preCostoArt"
+                            name="preCostoArt"
+                            placeholder="Enter Input"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="preVentaArt" class="col-md-3 col-form-label"
+                          >Precio Venta</label
+                        >
+                        <div class="col-md-9 p-0">
+                          <input
+                            type="text"
+                            class="form-control input-full"
+                            id="preVentaArt"
+                            name="preVentaArt"
+                            placeholder="Enter Input"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="estaEnviadoArt" class="col-md-3 col-form-label"
+                          >Estado Enviado</label
+                        >
+                        <select
+                        class="form-select"
+                        id="estaEnviadoArt"
+                        name="estaEnviadoArt"
+                      >
+                        <option value="N">No enviado</option>
+                        <option value="S">Enviado</option>
+                      </select>
+                      </div>
+                      <div class="form-group form-inline">
+                        <label for="estaVentaArt" class="col-md-3 col-form-label"
+                          >Estado Venta</label
+                        >
+                        <select
+                            class="form-select"
+                            id="estaVentaArt"
+                            name="estaVentaArt"
+                          >
+                            <option value="N">No vendido</option>
+                            <option value="S">Vendido</option>
+                            <option value="P">Perdida</option>
+                          </select>
+                      </div>
+                    </form>
+                    <div class="text-center">
+                        <button class="btn btn-dark" id="btnEditarArticulo"><i class="fas fa-save p-2"></i>Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="js/core/jquery-3.7.1.min.js"></script>
+    <script src="js/core/popper.min.js"></script>
+    <script src="js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="js/kaiadmin.min.js"></script>
+
+    <script src="js/detalle_pedido.js"></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/detalle_pedido_actualizar.js"></script>
+  </body>
+</html>
