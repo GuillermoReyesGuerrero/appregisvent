@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AppRegiVentas</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/pedido.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="css/app.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-confirm.min.css" />
+  </head>
+  <body>
+    <!-- Botón para abrir el menú -->
+    <span class="menu-btn" onclick="openNav()"><i class="mdi mdi-menu"></i></span>
+
+    <!-- Menú Lateral -->
+    <div id="mySidenav" class="sidenav">
+      <span class="closebtn" onclick="closeNav()"><i class="mdi mdi-close"></i></span>
+      <div class="text-center">
+        <img src="img/iconoReyes.png" alt="" width="90">
+        <span class="nomApp">AppRegiVentas</span>
+        <hr class="border border-light mt-1 mb-3" />
+      </div>
+      <a href="indexTotales.html"><i class="mdi mdi-home"></i> Inicio</a>
+      <a href="pedidos.html" class="active"><i class="mdi mdi-clipboard-text-outline"></i> Pedidos</a>
+      <a href="towcolumns.html"><i class="mdi mdi-cog"></i> Configuraciones</a>
+      <a href="javascript:void(0);" onclick="cerrarSesion()"><i class="mdi mdi-logout"></i> Cerrar Sesión</a>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div id="mainContent">
+      <div class="row mb-2">
+        <div class="col-2 text-left"><i class="mdi mdi-arrow-left-bold h2" onclick="regresarPedidos()"></i></div>
+        <div class="col"><h4>Pedido # <strong id="numeroPedido"></strong></h4></div>
+      </div>
+      <div id="cards-container" class="cards-container"></div>
+    </div>
+
+    <div id="cargar" class="modal hide" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-body text-center">
+                  <img src="img/loading.gif" style="width: 50px;"/><br>
+                  <b>Cargando...</b>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
+    <script src="js/pedido.js"></script>
+    <script src="js/logout.js"></script>
+  </body>
+</html>
