@@ -61,13 +61,13 @@ function displayPedidoArticulos(articulos,id_pedido) {
                           '<img src="'+articulo.imagen+'" alt="" class="img-fluid" />'+
                         '</div>'+
                       '</div>'+
-                      '<div class="col col-stats ms-4 ms-sm-0">'+
+                      '<div class="col col-stats ms-2 ms-sm-0">'+
                         '<div class="numbers">'+
                           '<p class="card-title">'+articulo.nombre+'</p>'+
                           '<p class="card-category">Cantidad: '+articulo.cantidad+'</p>'+
-                          '<p class="card-category">Costo: '+articulo.precio_costo+'</p>'+
-                          '<p class="card-category">Venta: '+articulo.precio_venta+'</p>'+
-                          '<p class="card-category">Estatus: '+(articulo.estatus_venta === "S" ? "Vendido" : articulo.estatus_venta === "N" ? "No vendido" : "Perdida")+'</p>'+
+                          '<p class="card-category">Costo: $'+articulo.precio_costo+'</p>'+
+                          '<p class="card-category">Venta: $'+articulo.precio_venta+'</p>'+
+                          '<p class="card-category">Estatus: '+(articulo.estatus_venta === "S" ? "<p class='text-success'>Vendido</p>" : articulo.estatus_venta === "N" ? "<p class='text-danger'>No vendido</p>" : "<p class='text-warning'>Perdida</p>")+'</p>'+
                         '</div>'+
                       '</div>'+
                       '<div class="col-auto">'+

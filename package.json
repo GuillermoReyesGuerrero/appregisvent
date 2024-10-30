@@ -18,7 +18,8 @@
   },
   "cordova": {
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

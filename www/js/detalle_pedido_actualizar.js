@@ -24,7 +24,20 @@ $("#btnEditarArticulo").click(function() {
       })
         .then(() => {
             console.log("Registro actualizado exitosamente.");
-            window.location.href = 'pedido.html?idPedido='+idPedido;
+            //window.location.href = 'pedido.html?idPedido='+idPedido;
+            swal("Registro actualizado exitosamente!", {
+                buttons: {
+                  confirm: {
+                    text: "Aceptar",
+                    value: true,
+                    className: "btn btn-success",
+                  },
+                },
+              }).then((value) => {
+                if (value) {
+                   window.location.href = 'pedido.html?idPedido='+idPedido;
+                }
+              });
         })
         .catch((error) => {
             console.error("Error al actualizar el registro:", error);
