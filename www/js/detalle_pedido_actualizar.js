@@ -11,8 +11,6 @@ $("#btnEditarArticulo").click(function() {
     var idArticulo = $('#idArticuloArt').val();
     var idPedido = $('#idPedidoArt').val();
 
-    // console.log(idArticulo+" - "+nombre+" - "+descripcion+" - "+cantidad+" - "+precioCosto);
-
     update(ref(dbRealTime, "articulos/"+idArticulo), {
         cantidad: cantidad,
         descripcion: descripcion,
@@ -23,8 +21,6 @@ $("#btnEditarArticulo").click(function() {
         precio_venta: precioVenta 
       })
         .then(() => {
-            console.log("Registro actualizado exitosamente.");
-            //window.location.href = 'pedido.html?idPedido='+idPedido;
             swal("Registro actualizado exitosamente!", {
                 buttons: {
                   confirm: {

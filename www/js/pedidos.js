@@ -1,10 +1,8 @@
-// Verificar si la sesión está activa
+
 function verificarSesion() {
   const sessionActive = localStorage.getItem("SessionActive");
-
-  // Si no existe el valor de la sesión o es diferente de "True", redirige al index
   if (!sessionActive || sessionActive !== "True") {
-    window.location = "index.html"; // Redirigir a la página de inicio de sesión
+    window.location = "index.html";
   }
 }
 
@@ -31,7 +29,6 @@ function obtenerPedidos() {
       // iniciarAlerts();
     },
     success: function (response) {
-      console.log("Datos cargados:", response);
       displayPedidos(response);
     },
     error: function (e) {
@@ -75,7 +72,6 @@ function displayPedidos(pedidos) {
 }
 
 function obtenerPedido(id_pedido) {
-  console.log(id_pedido);
   window.location.href = "pedido.html?idPedido=" + id_pedido;
 }
 

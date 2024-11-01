@@ -1,12 +1,8 @@
 
-
-// Verificar si la sesión está activa
 function verificarSesion() {
     const sessionActive = localStorage.getItem("SessionActive");
-
-    // Si no existe el valor de la sesión o es diferente de "True", redirige al index
     if (!sessionActive || sessionActive !== "True") {
-        window.location = "index.html"; // Redirigir a la página de inicio de sesión
+        window.location = "index.html";
     }
 }
 
@@ -21,10 +17,7 @@ window.onload = function() {
     const id_pedido = params.get('idPedido');
     idPedido = id_pedido;
     idArticulo = id_articulo;
-    console.log('ID del id_articulo:', id_articulo);
-    // Puedes usar el id_mispedidos para cargar los detalles del pedido desde tu base de datos, etc.
     $('#numeroArticulo').text(id_articulo);
-
     obtenerArticulo(id_articulo,op);
 };
 
@@ -46,7 +39,6 @@ function obtenerArticulo(id_articulo,op) {
             // iniciarAlerts();
         },
         success: function(response) {
-            console.log('Datos cargados:', response);
             $('#imagenArticulo').attr('src', response.imagen);
             $('#idArticuloArt').val(response.id_articulo);
             $('#idPedidoArt').val(response.id_pedido);
@@ -65,6 +57,5 @@ function obtenerArticulo(id_articulo,op) {
 }
 
 function regresarVerpedido(){
-    // console.log(id);
     window.location.href = 'pedido.html?idPedido='+idPedido;
 }
