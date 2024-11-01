@@ -1,22 +1,15 @@
 import { auth, signInWithEmailAndPassword } from "./firebase.js";
 
-var ModalCarga = new bootstrap.Modal(document.getElementById("cargar"), {});
-
 $("#loginBtn").click(function() {
 
     var username = $("#username").val();
     var password = $("#password").val();
-	var Parametros = {"username" : username, "password" : password};
-
-    ModalCarga.show();
+	  var Parametros = {"username" : username, "password" : password};
 
     signInWithEmailAndPassword(auth, username, password)
       .then((userCredential) => {
-        // Inicio de sesión exitoso
         var user = userCredential.user;
         console.log("Usuario ha iniciado sesión:", user);
-        ModalCarga.hide();
-        // alert("Inicio de sesión exitoso.");
         localStorage.setItem("SessionUID", user.uid);
         localStorage.setItem("SessionEmail", user.email);
         localStorage.setItem("SessionAccessToken", user.accessToken);
@@ -28,7 +21,6 @@ $("#loginBtn").click(function() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error("Error al iniciar sesión:", errorCode, errorMessage);
-        ModalCarga.hide();
         alert("Error al iniciar sesión: " + errorMessage);
       });
     

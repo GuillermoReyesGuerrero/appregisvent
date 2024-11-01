@@ -35,10 +35,10 @@ function obtenerPedidoArticulos(id_pedido) {
     method: "GET",
     dataType: "json",
     beforeSend: function () {
-      iniciarAlerts();
+      // iniciarAlerts();
     },
     success: function (response) {
-      console.log("Datos cargados:", response);
+      // console.log("Datos cargados:", response);
       displayPedidoArticulos(response,id_pedido);
     },
     error: function (e) {
@@ -51,7 +51,7 @@ function displayPedidoArticulos(articulos,id_pedido) {
   var contenido = "";
   articulos.forEach((articulo) => {
     if (articulo !== null && articulo.id_pedido == id_pedido) {
-        console.log(articulo.id_pedido);
+        // console.log(articulo.id_pedido);
   contenido += '<div class="col-sm-6 col-md-3">'+
                 '<div class="card card-stats card-round">'+
                   '<div class="card-body">'+

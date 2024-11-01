@@ -28,7 +28,7 @@ function obtenerPedidos() {
     method: "GET",
     dataType: "json",
     beforeSend: function () {
-      iniciarAlerts();
+      // iniciarAlerts();
     },
     success: function (response) {
       console.log("Datos cargados:", response);

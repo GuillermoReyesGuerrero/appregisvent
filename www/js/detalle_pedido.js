@@ -43,7 +43,7 @@ function obtenerArticulo(id_articulo,op) {
         method: "GET",
         cache: false,
         beforeSend: function () {
-            iniciarAlerts();
+            // iniciarAlerts();
         },
         success: function(response) {
             console.log('Datos cargados:', response);
