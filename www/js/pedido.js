@@ -1,10 +1,8 @@
-// Verificar si la sesión está activa
+
 function verificarSesion() {
   const sessionActive = localStorage.getItem("SessionActive");
-
-  // Si no existe el valor de la sesión o es diferente de "True", redirige al index
   if (!sessionActive || sessionActive !== "True") {
-    window.location = "index.html"; // Redirigir a la página de inicio de sesión
+    window.location = "index.html";
   }
 }
 
@@ -15,8 +13,6 @@ window.onload = function () {
   const params = new URLSearchParams(window.location.search);
   const id_pedido = params.get("idPedido");
   idPedido = id_pedido;
-  //console.log('ID del pedido:', id_pedido);
-  // Puedes usar el id_mispedidos para cargar los detalles del pedido desde tu base de datos, etc.
   $("#numeroPedido").text(id_pedido);
   obtenerPedidoArticulos(id_pedido);
 };
@@ -35,10 +31,9 @@ function obtenerPedidoArticulos(id_pedido) {
     method: "GET",
     dataType: "json",
     beforeSend: function () {
-      iniciarAlerts();
+      // iniciarAlerts();
     },
     success: function (response) {
-      console.log("Datos cargados:", response);
       displayPedidoArticulos(response,id_pedido);
     },
     error: function (e) {
@@ -51,7 +46,6 @@ function displayPedidoArticulos(articulos,id_pedido) {
   var contenido = "";
   articulos.forEach((articulo) => {
     if (articulo !== null && articulo.id_pedido == id_pedido) {
-        console.log(articulo.id_pedido);
   contenido += '<div class="col-sm-6 col-md-3">'+
                 '<div class="card card-stats card-round">'+
                   '<div class="card-body">'+
@@ -83,82 +77,7 @@ function displayPedidoArticulos(articulos,id_pedido) {
 }
 
 function consultarArticulo(idArticulo, op) {
-  console.log(idArticulo+' '+op);
   window.location.href = "detalle_pedido.html?idArticulo=" + idArticulo + "&op=" + op+ "&idPedido=" +idPedido;
-}
-
-function eliminarArticulo(idArticulo) {
-  $.confirm({
-    title: "CONFIRMACIÓN",
-    content: "¿Seguro deseas eliminar el articulo " + idArticulo + " ?",
-    type: "secondary",
-    theme: "modern",
-    typeAnimated: true,
-    buttons: {
-      confirm: {
-        text: "Aceptar",
-        btnClass: "btn-secondary",
-        action: function () {
-          $.ajax({
-            url:
-              "https://secure-beach-31133-25c031d46ad1.herokuapp.com/api/articulo/" +
-              idArticulo,
-            method: "DELETE",
-            cache: false,
-            dataType: "json",
-            beforeSend: function () {
-              myModal.show();
-            },
-            success: function (response) {
-              myModal.hide();
-              //console.log(response);
-              if (response.status) {
-                $.confirm({
-                  title: "EXITO",
-                  content: response.msg,
-                  type: "green",
-                  theme: "modern",
-                  typeAnimated: true,
-                  buttons: {
-                    confirm: {
-                      text: "Aceptar",
-                      btnClass: "btn-success",
-                      action: function () {
-                        window.location.reload();
-                      },
-                    },
-                  },
-                });
-              } else {
-                $.confirm({
-                  title: "ERROR",
-                  content: response.message,
-                  type: "red",
-                  theme: "modern",
-                  typeAnimated: true,
-                  buttons: {
-                    close: {
-                      text: "Cerrar",
-                      btnClass: "btn-red",
-                      action: function () {},
-                    },
-                  },
-                });
-              }
-            },
-            error: function (e) {
-              console.log(e);
-            },
-          });
-        },
-      },
-      close: {
-        text: "Cancelar",
-        btnClass: "btn-red",
-        action: function () {},
-      },
-    },
-  });
 }
 
 function regresarPedidos() {
