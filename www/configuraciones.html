@@ -38,13 +38,6 @@
     <link rel="stylesheet" href="css/plugins.min.css" />
     <link rel="stylesheet" href="css/kaiadmin.min.css" />
 
-    <style>
-        .swal-icon--custom {
-            width: 50px !important;
-            height: 50px !important;
-        }
-    </style>
-
     <!-- <link rel="stylesheet" href="css/demo.css" /> -->
   </head>
   <body>
@@ -88,13 +81,13 @@
                   <p>Inicio</p>
                 </a>
               </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="pedidos.html">
                   <i class="fas fa-th-list"></i>
                   <p>Pedidos</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a href="configuraciones.html">
                   <i class="fas fa-cog"></i>
                   <p>Configuraciones</p>
@@ -138,13 +131,87 @@
         <div class="container">
           <div class="page-inner">
             <div
-              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2">
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
               <div>
-                <h3 class="fw-bold mb-3"><i class="fas fa-arrow-left icon-big p-2" onclick="regresarPedidos()"></i> Pedido # <strong id="numeroPedido"></strong></h3>
+                <h3 class="fw-bold mb-3">Configuraciones</h3>
               </div>
             </div>
-            <div class="row" id="contentCardsPedido">
-            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                  <div
+                    class="card-header"
+                    style="background-image: url('img/product6.jpg')"
+
+                  >
+                    <div class="profile-picture">
+                      <div class="avatar avatar-xxl">
+                        <img
+                        id="txtImagen"
+                          src="img/user-14.png"
+                          alt="..."
+                          class="avatar-img rounded-circle"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="user-profile text-center">
+                      <div class="name text-capitalize" id="textNombre"></div>
+                      <div class="job" id="txtCorreo"></div>
+                      <!-- <div class="desc">A man who hates loneliness</div> -->
+                      <div class="social-media">
+                        <a
+                          class="btn btn-info btn-twitter btn-sm btn-link"
+                          href="#"
+                        >
+                          <span class="btn-label just-icon"
+                            ><i class="icon-social-twitter"></i>
+                          </span>
+                        </a>
+                        <a
+                          class="btn btn-primary btn-sm btn-link"
+                          rel="publisher"
+                          href="#"
+                        >
+                          <span class="btn-label just-icon"
+                            ><i class="icon-social-facebook"></i>
+                          </span>
+                        </a>
+                        <a
+                          class="btn btn-danger btn-sm btn-link"
+                          rel="publisher"
+                          href="#"
+                        >
+                          <span class="btn-label just-icon"
+                            ><i class="icon-social-instagram"></i>
+                          </span>
+                        </a>
+                      </div>
+                      <!-- <div class="view-profile">
+                        <a href="#" class="btn btn-secondary w-100"
+                          >View Full Profile</a
+                        >
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row user-stats text-center">
+                      <div class="col">
+                        <div class="number">125</div>
+                        <div class="title">Post</div>
+                      </div>
+                      <div class="col">
+                        <div class="number">25K</div>
+                        <div class="title">Followers</div>
+                      </div>
+                      <div class="col">
+                        <div class="number">134</div>
+                        <div class="title">Following</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -183,7 +250,7 @@
     <!-- Kaiadmin JS -->
     <script src="js/kaiadmin.min.js"></script>
 
-    <script src="js/pedido.js"></script>
+    <script src="js/configuraciones.js"></script>
     <script src="js/logout.js"></script>
   </body>
 </html>

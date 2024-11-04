@@ -20,8 +20,15 @@ $("#loginBtn").click(function() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error("Error al iniciar sesión:", errorCode, errorMessage);
-        alert("Error al iniciar sesión: " + errorMessage);
+        // console.error("Error al iniciar sesión:", errorCode, errorMessage);
+        // alert("Error al iniciar sesión: " + errorMessage);
+        swal("ERROR", "Error al iniciar sesión: " + errorMessage, {
+          buttons: {
+            confirm: {
+              className: "btn btn-warning",
+            },
+          },
+        });
       });
     
     console.log(Parametros);

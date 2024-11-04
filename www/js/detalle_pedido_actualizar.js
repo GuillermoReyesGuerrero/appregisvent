@@ -11,6 +11,12 @@ $("#btnEditarArticulo").click(function() {
     var idArticulo = $('#idArticuloArt').val();
     var idPedido = $('#idPedidoArt').val();
 
+    var ganacia = 0;
+
+    if(estatusVenta == 'S'){
+        ganacia = precioVenta - precioCosto;
+    }
+
     update(ref(dbRealTime, "articulos/"+idArticulo), {
         cantidad: cantidad,
         descripcion: descripcion,
@@ -18,7 +24,8 @@ $("#btnEditarArticulo").click(function() {
         estatus_venta: estatusVenta,
         nombre: nombre,
         precio_costo: precioCosto,
-        precio_venta: precioVenta 
+        precio_venta: precioVenta,
+        ganancia: ganacia.toFixed(2)
       })
         .then(() => {
             swal("Registro actualizado exitosamente!", {

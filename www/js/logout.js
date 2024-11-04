@@ -1,30 +1,32 @@
 // Función para cerrar la sesión
 function cerrarSesion() {
-    $.confirm({
-        title: 'CONFIRMACIÓN',
-        content: "¿Seguro deseas cerrar la sesión?",
-        type: 'secondary',
-        theme: 'modern',
-        typeAnimated: true,
+
+    swal({
+        title: "CONFIRMACIÓN",
+        text: "¿Seguro deseas cerrar la sesión?",
+        type: "warning",
         buttons: {
-            confirm: {
-                text: 'Aceptar',
-                btnClass: 'btn-secondary',
-                action: function() {
-                    localStorage.removeItem("SessionUID");
-                    localStorage.removeItem("SessionEmail");
-                    localStorage.removeItem("SessionAccessToken");
-                    localStorage.removeItem("SessionActive");
-                
-                    // Redirigir al index después de cerrar la sesión
-                    window.location = "index.html";
-                }
-            },
-            close: {
-                text: 'Cancelar',
-                btnClass: 'btn-red',
-                action: function() {}
-            }
+          confirm: {
+            text: "Si",
+            className: "btn btn-success",
+          },
+          cancel: {
+            visible: true,
+            text: "No",
+            className: "btn btn-danger",
+          },
+        },
+      }).then((value) => {
+        if (value) {
+            localStorage.removeItem("SessionUID");
+            localStorage.removeItem("SessionEmail");
+            localStorage.removeItem("SessionAccessToken");
+            localStorage.removeItem("SessionActive");
+        
+            // Redirigir al index después de cerrar la sesión
+            window.location = "index.html";
+        } else {
+          swal.close();
         }
-    });
+      });
 }
