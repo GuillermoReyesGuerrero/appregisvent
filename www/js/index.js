@@ -31,7 +31,7 @@ $("#loginBtn").click(function() {
         });
       });
     
-    console.log(Parametros);
+    // console.log(Parametros);
 });
 
 
