@@ -7,11 +7,7 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
     />
-    <link
-      rel="icon"
-      href="img/iconoReyes.png"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="img/iconoReyes.png" type="image/x-icon" />
 
     <!-- Fonts and icons -->
     <script src="js/plugin/webfont/webfont.min.js"></script>
@@ -37,6 +33,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/plugins.min.css" />
     <link rel="stylesheet" href="css/kaiadmin.min.css" />
+
+    <style>
+      .swal-icon--custom {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    </style>
 
     <!-- <link rel="stylesheet" href="css/demo.css" /> -->
   </head>
@@ -74,8 +77,8 @@
                   <p>AppRegisVent</p>
                 </a>
               </li>
-              <hr>
-              <li class="nav-item active">
+              <hr />
+              <li class="nav-item">
                 <a href="mainTotales.html">
                   <i class="fas fa-home"></i>
                   <p>Inicio</p>
@@ -87,7 +90,7 @@
                   <p>Pedidos</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a href="estadisticas.html">
                   <i class="far fa-chart-bar"></i>
                   <p>Estadísticas</p>
@@ -136,118 +139,33 @@
 
         <div class="container">
           <div class="page-inner">
-            <div
-              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+            <div lass="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2">
               <div>
-                <h3 class="fw-bold mb-3">Dashboard</h3>
+                <h3 class="fw-bold mb-3">Estadísticas</h3>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-primary bubble-shadow-small"
-                        >
-                          <i class="fas fa-shopping-bag"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total de Articulos</p>
-                          <h4 class="card-title" id="totalArticulos">0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="form-group form-inline">
+                <label for="estaEnviadoArt" class="col-md-3 col-form-label"
+                  >Estatus del producto</label
+                >
+                <select
+                  class="form-select"
+                  id="estaEnviadoArt"
+                  name="estaEnviadoArt"
+                  onchange="mostrarEstadistica(this.value)"
+                >
+                  <option value="">Seleccionar Estatus</option>
+                  <option value="S">Vendidos</option>
+                  <option value="N">No vendidos</option>
+                  <option value="P">Perdidas</option>
+                </select>
               </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-info bubble-shadow-small"
-                        >
-                          <i class="fas fa-donate"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total de Venta</p>
-                          <h4 class="card-title" id="totalVenta">0.0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-success bubble-shadow-small"
-                        >
-                          <i class="fas fa-luggage-cart"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total de Ganancia</p>
-                          <h4 class="card-title" id="totalGanancia">0.0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-secondary bubble-shadow-small"
-                        >
-                          <i class="fas fa-cart-arrow-down"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total de Inversión</p>
-                          <h4 class="card-title" id="totalInversion">0.0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-round">
-                  <div class="card-body">
-                    <div class="row align-items-center">
-                      <div class="col-icon">
-                        <div
-                          class="icon-big text-center icon-secondary bubble-shadow-small"
-                        >
-                          <i class="fas fa-dolly"></i>
-                        </div>
-                      </div>
-                      <div class="col col-stats ms-3 ms-sm-0">
-                        <div class="numbers">
-                          <p class="card-category">Total de Perdida</p>
-                          <h4 class="card-title" id="totalPerdida">0.0</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="row">
+                <div class="col" id="contentTotalGanancia"></div>
+            </div>
+            <div class="row" id="contentCardsArticulos">
             </div>
           </div>
         </div>
@@ -287,7 +205,7 @@
     <!-- Kaiadmin JS -->
     <script src="js/kaiadmin.min.js"></script>
 
-    <script src="js/mainTotales.js"></script>
+    <script src="js/estadistica.js"></script>
     <script src="js/logout.js"></script>
   </body>
 </html>
